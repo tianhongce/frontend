@@ -1081,7 +1081,7 @@ function getCookieByString(cookieName) {
                                 policy: that.token,
                                 "x:path": file.path,
                                 signature: that.sign,
-                                OSSAccessKeyId: that.access,
+                                AWSAccessKeyId: that.access,
                                 "x:fname": file.name,
                                 key: that.file_name.replace(
                                     "${filename}",
