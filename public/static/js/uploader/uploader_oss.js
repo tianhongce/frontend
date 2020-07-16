@@ -173,6 +173,7 @@ function getCookieByString(cookieName) {
             uploadConfig.saveType == "remote" ||
             uploadConfig.saveType == "onedrive"
         ) {
+            // TODO 可以改成华为OBS
             qiniuUploadUrl = uploadConfig.upUrl;
             var qiniuUploadUrls = [uploadConfig.upUrl];
             var qiniuUpHosts = {
@@ -661,6 +662,7 @@ function getCookieByString(cookieName) {
                 return result;
             };
 
+            // TODO 可以改成OBS
             var getPutPolicy = function(uptoken) {
                 if (
                     uploadConfig.saveType == "local" ||
@@ -687,6 +689,7 @@ function getCookieByString(cookieName) {
                 }
             };
 
+            // TODO 可以改
             var getUpHosts = function(uptoken) {
                 var putPolicy = getPutPolicy(uptoken);
                 // var uphosts_url = "//uc.qbox.me/v1/query?ak="+ak+"&bucket="+putPolicy.scope;
