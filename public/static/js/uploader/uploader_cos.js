@@ -88,13 +88,13 @@ function getCookieByString(cookieName) {
          */
         this.detectIEVersion = function() {
             var v = 4,
-                div = document.createElement("div"),
-                all = div.getElementsByTagName("i");
+                    div = document.createElement("div"),
+                    all = div.getElementsByTagName("i");
             while (
-                ((div.innerHTML =
-                    "<!--[if gt IE " + v + "]><i></i><![endif]-->"),
-                all[0])
-            ) {
+                    ((div.innerHTML =
+                            "<!--[if gt IE " + v + "]><i></i><![endif]-->"),
+                            all[0])
+                    ) {
                 v++;
             }
             return v > 4 ? v : false;
@@ -132,7 +132,7 @@ function getCookieByString(cookieName) {
             }
             if (document.getElementById("qiniu-js-sdk-log")) {
                 document.getElementById("qiniu-js-sdk-log").innerHTML +=
-                    "<p>" + msg + "</p>";
+                        "<p>" + msg + "</p>";
             }
         }
 
@@ -142,9 +142,9 @@ function getCookieByString(cookieName) {
                 // logger[func].history = logger[func].history || [];
                 // logger[func].history.push(arguments);
                 if (
-                    window.console &&
-                    window.console.log &&
-                    logger.level >= logger[code]
+                        window.console &&
+                        window.console.log &&
+                        logger.level >= logger[code]
                 ) {
                     var args = Array.prototype.slice.call(arguments);
                     log(func, args);
@@ -154,9 +154,9 @@ function getCookieByString(cookieName) {
 
         for (var property in logger) {
             if (
-                logger.hasOwnProperty(property) &&
-                typeof logger[property] === "number" &&
-                !logger.hasOwnProperty(property.toLowerCase())
+                    logger.hasOwnProperty(property) &&
+                    typeof logger[property] === "number" &&
+                    !logger.hasOwnProperty(property.toLowerCase())
             ) {
                 makeLogFunc(property);
             }
@@ -170,12 +170,12 @@ function getCookieByString(cookieName) {
          * @type {Array}
          */
 
-            qiniuUploadUrl = uploadConfig.upUrl;
-            var qiniuUploadUrls = [uploadConfig.upUrl];
-            var qiniuUpHosts = {
-                http: [uploadConfig.upUrl],
-                https: [uploadConfig.upUrl]
-            };
+        qiniuUploadUrl = uploadConfig.upUrl;
+        var qiniuUploadUrls = [uploadConfig.upUrl];
+        var qiniuUpHosts = {
+            http: [uploadConfig.upUrl],
+            https: [uploadConfig.upUrl]
+        };
 
 
         var changeUrlTimes = 0;
@@ -189,9 +189,9 @@ function getCookieByString(cookieName) {
          */
         this.resetUploadUrl = function() {
             var hosts =
-                window.location.protocol === "https:"
-                    ? qiniuUpHosts.https
-                    : qiniuUpHosts.http;
+                    window.location.protocol === "https:"
+                            ? qiniuUpHosts.https
+                            : qiniuUpHosts.http;
             var i = changeUrlTimes % hosts.length;
             qiniuUploadUrl = hosts[i];
             changeUrlTimes++;
@@ -222,8 +222,8 @@ function getCookieByString(cookieName) {
             var tempArr = filename.split(".");
             var ext;
             if (
-                tempArr.length === 1 ||
-                (tempArr[0] === "" && tempArr.length === 2)
+                    tempArr.length === 1 ||
+                    (tempArr[0] === "" && tempArr.length === 2)
             ) {
                 ext = "";
             } else {
@@ -259,9 +259,9 @@ function getCookieByString(cookieName) {
 
             var string = argString + ""; // .replace(/\r\n/g, '\n').replace(/\r/g, '\n');
             var utftext = "",
-                start,
-                end,
-                stringl = 0;
+                    start,
+                    end,
+                    stringl = 0;
 
             start = end = 0;
             stringl = string.length;
@@ -275,29 +275,29 @@ function getCookieByString(cookieName) {
                     enc = String.fromCharCode((c1 >> 6) | 192, (c1 & 63) | 128);
                 } else if ((c1 & 0xf800) ^ (0xd800 > 0)) {
                     enc = String.fromCharCode(
-                        (c1 >> 12) | 224,
-                        ((c1 >> 6) & 63) | 128,
-                        (c1 & 63) | 128
+                            (c1 >> 12) | 224,
+                            ((c1 >> 6) & 63) | 128,
+                            (c1 & 63) | 128
                     );
                 } else {
                     // surrogate pairs
                     if ((c1 & 0xfc00) ^ (0xd800 > 0)) {
                         throw new RangeError(
-                            "Unmatched trail surrogate at " + n
+                                "Unmatched trail surrogate at " + n
                         );
                     }
                     var c2 = string.charCodeAt(++n);
                     if ((c2 & 0xfc00) ^ (0xdc00 > 0)) {
                         throw new RangeError(
-                            "Unmatched lead surrogate at " + (n - 1)
+                                "Unmatched lead surrogate at " + (n - 1)
                         );
                     }
                     c1 = ((c1 & 0x3ff) << 10) + (c2 & 0x3ff) + 0x10000;
                     enc = String.fromCharCode(
-                        (c1 >> 18) | 240,
-                        ((c1 >> 12) & 63) | 128,
-                        ((c1 >> 6) & 63) | 128,
-                        (c1 & 63) | 128
+                            (c1 >> 18) | 240,
+                            ((c1 >> 12) & 63) | 128,
+                            ((c1 >> 6) & 63) | 128,
+                            (c1 & 63) | 128
                     );
                 }
                 if (enc !== null) {
@@ -335,19 +335,19 @@ function getCookieByString(cookieName) {
             //    return atob(data);
             //}
             var b64 =
-                "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+                    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
             var o1,
-                o2,
-                o3,
-                h1,
-                h2,
-                h3,
-                h4,
-                bits,
-                i = 0,
-                ac = 0,
-                dec = "",
-                tmp_arr = [];
+                    o2,
+                    o3,
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    bits,
+                    i = 0,
+                    ac = 0,
+                    dec = "",
+                    tmp_arr = [];
 
             if (!data) {
                 return data;
@@ -404,19 +404,19 @@ function getCookieByString(cookieName) {
             //    return atob(data);
             //}
             var b64 =
-                "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+                    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
             var o1,
-                o2,
-                o3,
-                h1,
-                h2,
-                h3,
-                h4,
-                bits,
-                i = 0,
-                ac = 0,
-                enc = "",
-                tmp_arr = [];
+                    o2,
+                    o3,
+                    h1,
+                    h2,
+                    h3,
+                    h4,
+                    bits,
+                    i = 0,
+                    ac = 0,
+                    enc = "",
+                    tmp_arr = [];
 
             if (!data) {
                 return data;
@@ -439,10 +439,10 @@ function getCookieByString(cookieName) {
 
                 // use hexets to index into b64, and append result to encoded string
                 tmp_arr[ac++] =
-                    b64.charAt(h1) +
-                    b64.charAt(h2) +
-                    b64.charAt(h3) +
-                    b64.charAt(h4);
+                        b64.charAt(h1) +
+                        b64.charAt(h2) +
+                        b64.charAt(h3) +
+                        b64.charAt(h4);
             } while (i < data.length);
 
             enc = tmp_arr.join("");
@@ -514,8 +514,8 @@ function getCookieByString(cookieName) {
             if (rx_dangerous.test(text)) {
                 text = text.replace(rx_dangerous, function(a) {
                     return (
-                        "\\u" +
-                        ("0000" + a.charCodeAt(0).toString(16)).slice(-4)
+                            "\\u" +
+                            ("0000" + a.charCodeAt(0).toString(16)).slice(-4)
                     );
                 });
             }
@@ -565,7 +565,7 @@ function getCookieByString(cookieName) {
                         for (var property in obj) {
                             if (obj.hasOwnProperty(property)) {
                                 string.push(
-                                    that.stringifyJSON(property) +
+                                        that.stringifyJSON(property) +
                                         ":" +
                                         that.stringifyJSON(obj[property])
                                 );
@@ -600,50 +600,50 @@ function getCookieByString(cookieName) {
         this.uploader = function(op) {
             /********** inner function define start **********/
 
-            // according the different condition to reset chunk size
-            // and the upload strategy according with the chunk size
-            // when chunk size is zero will cause to direct upload
-            // see the statement binded on 'BeforeUpload' event
+                    // according the different condition to reset chunk size
+                    // and the upload strategy according with the chunk size
+                    // when chunk size is zero will cause to direct upload
+                    // see the statement binded on 'BeforeUpload' event
             var reset_chunk_size = function() {
-                var ie = that.detectIEVersion();
-                var BLOCK_BITS, MAX_CHUNK_SIZE, chunk_size;
-                // case Safari 5、Windows 7、iOS 7 set isSpecialSafari to true
-                var isSpecialSafari =
-                    (moxie.core.utils.Env.browser === "Safari" &&
-                        moxie.core.utils.Env.version <= 5 &&
-                        moxie.core.utils.Env.os === "Windows" &&
-                        moxie.core.utils.Env.osVersion === "7") ||
-                    (moxie.core.utils.Env.browser === "Safari" &&
-                        moxie.core.utils.Env.os === "iOS" &&
-                        moxie.core.utils.Env.osVersion === "7");
-                // case IE 9-，chunk_size is not empty and flash is included in runtimes
-                // set op.chunk_size to zero
-                //if (ie && ie < 9 && op.chunk_size && op.runtimes.indexOf('flash') >= 0) {
-                if (
-                    ie &&
-                    ie < 9 &&
-                    op.chunk_size &&
-                    op.runtimes.indexOf("flash") >= 0
-                ) {
-                    //  link: http://www.plupload.com/docs/Frequently-Asked-Questions#when-to-use-chunking-and-when-not
-                    //  when plupload chunk_size setting is't null ,it cause bug in ie8/9  which runs  flash runtimes (not support html5) .
-                    op.chunk_size = 0;
-                } else if (isSpecialSafari) {
-                    // win7 safari / iOS7 safari have bug when in chunk upload mode
-                    // reset chunk_size to 0
-                    // disable chunk in special version safari
-                    op.chunk_size = 0;
-                } else {
-                    BLOCK_BITS = 20;
-                    MAX_CHUNK_SIZE = 4 << BLOCK_BITS; //4M
+                        var ie = that.detectIEVersion();
+                        var BLOCK_BITS, MAX_CHUNK_SIZE, chunk_size;
+                        // case Safari 5、Windows 7、iOS 7 set isSpecialSafari to true
+                        var isSpecialSafari =
+                                (moxie.core.utils.Env.browser === "Safari" &&
+                                        moxie.core.utils.Env.version <= 5 &&
+                                        moxie.core.utils.Env.os === "Windows" &&
+                                        moxie.core.utils.Env.osVersion === "7") ||
+                                (moxie.core.utils.Env.browser === "Safari" &&
+                                        moxie.core.utils.Env.os === "iOS" &&
+                                        moxie.core.utils.Env.osVersion === "7");
+                        // case IE 9-，chunk_size is not empty and flash is included in runtimes
+                        // set op.chunk_size to zero
+                        //if (ie && ie < 9 && op.chunk_size && op.runtimes.indexOf('flash') >= 0) {
+                        if (
+                                ie &&
+                                ie < 9 &&
+                                op.chunk_size &&
+                                op.runtimes.indexOf("flash") >= 0
+                        ) {
+                            //  link: http://www.plupload.com/docs/Frequently-Asked-Questions#when-to-use-chunking-and-when-not
+                            //  when plupload chunk_size setting is't null ,it cause bug in ie8/9  which runs  flash runtimes (not support html5) .
+                            op.chunk_size = 0;
+                        } else if (isSpecialSafari) {
+                            // win7 safari / iOS7 safari have bug when in chunk upload mode
+                            // reset chunk_size to 0
+                            // disable chunk in special version safari
+                            op.chunk_size = 0;
+                        } else {
+                            BLOCK_BITS = 20;
+                            MAX_CHUNK_SIZE = 4 << BLOCK_BITS; //4M
 
-                    chunk_size = plupload.parseSize(op.chunk_size);
+                            chunk_size = plupload.parseSize(op.chunk_size);
 
-                    // qiniu service  max_chunk_size is 4m
-                    // reset chunk_size to max_chunk_size(4m) when chunk_size > 4m
-                }
-                // if op.chunk_size set 0 will be cause to direct upload
-            };
+                            // qiniu service  max_chunk_size is 4m
+                            // reset chunk_size to max_chunk_size(4m) when chunk_size > 4m
+                        }
+                        // if op.chunk_size set 0 will be cause to direct upload
+                    };
 
             var getHosts = function(hosts) {
                 var result = [];
@@ -659,7 +659,7 @@ function getCookieByString(cookieName) {
             };
 
             var getPutPolicy = function(uptoken) {
-               return "";
+                return "";
             };
 
             var getUpHosts = function(uptoken) {
@@ -667,11 +667,11 @@ function getCookieByString(cookieName) {
                 // var uphosts_url = "//uc.qbox.me/v1/query?ak="+ak+"&bucket="+putPolicy.scope;
                 // IE 9- is not support protocal relative url
                 var uphosts_url =
-                    window.location.protocol +
-                    "//uc.qbox.me/v1/query?ak=" +
-                    putPolicy.ak +
-                    "&bucket=" +
-                    putPolicy.bucket;
+                        window.location.protocol +
+                        "//uc.qbox.me/v1/query?ak=" +
+                        putPolicy.ak +
+                        "&bucket=" +
+                        putPolicy.bucket;
                 logger.debug("putPolicy: ", putPolicy);
                 logger.debug("get uphosts from: ", uphosts_url);
                 var ie = that.detectIEVersion();
@@ -682,16 +682,16 @@ function getCookieByString(cookieName) {
                 } else {
                     ajax = that.createAjax();
                 }
-                    qiniuUpHosts.http = [uploadConfig.upUrl];
-                    qiniuUpHosts.http = [uploadConfig.upUrl];
-                    that.resetUploadUrl();
+                qiniuUpHosts.http = [uploadConfig.upUrl];
+                qiniuUpHosts.http = [uploadConfig.upUrl];
+                that.resetUploadUrl();
                 return;
             };
 
             var getUptoken = function(file) {
                 if (
-                    !that.token ||
-                    (op.uptoken_url && that.tokenInfo.isExpired())
+                        !that.token ||
+                        (op.uptoken_url && that.tokenInfo.isExpired())
                 ) {
                     return getNewUpToken(file);
                 } else {
@@ -716,16 +716,16 @@ function getCookieByString(cookieName) {
                         file.size = 0;
                     }
                     ajax.open(
-                        "GET",
-                        that.uptoken_url +
+                            "GET",
+                            that.uptoken_url +
                             "?path=" +
                             encodeURIComponent(window.pathCache[file.id]) +
                             "&size=" +
                             file.size +
                             "&name=" +
                             encodeURIComponent(file.name)+
-                        "&type=cos",
-                        true
+                            "&type=cos",
+                            true
                     );
                     ajax.setRequestHeader("If-Modified-Since", "0");
                     ajax.send();
@@ -779,7 +779,7 @@ function getCookieByString(cookieName) {
                     callback();
                 } else {
                     logger.error(
-                        "one of [uptoken, uptoken_url, uptoken_func] settings in options is required!"
+                            "one of [uptoken, uptoken_url, uptoken_func] settings in options is required!"
                     );
                     callback();
                 }
@@ -798,12 +798,12 @@ function getCookieByString(cookieName) {
                 //     return putPolicy.key
                 // }
                 var key = "",
-                    unique_names = false;
+                        unique_names = false;
                 if (!op.save_key) {
                     unique_names = up.getOption && up.getOption("unique_names");
                     unique_names =
-                        unique_names ||
-                        (up.settings && up.settings.unique_names);
+                            unique_names ||
+                            (up.settings && up.settings.unique_names);
                     if (unique_names) {
                         var ext = that.getFileExtension(file.name);
                         key = ext ? file.id + "." + ext : file.id;
@@ -856,7 +856,7 @@ function getCookieByString(cookieName) {
             that.uptoken_url = op.uptoken_url;
             that.token = "";
             that.key_handler =
-                typeof op.init.Key === "function" ? op.init.Key : "";
+                    typeof op.init.Key === "function" ? op.init.Key : "";
             this.domain = op.domain;
             // TODO: ctx is global in scope of a uploader instance
             // this maybe cause error
@@ -881,7 +881,7 @@ function getCookieByString(cookieName) {
             // add accept in multipart params
             if (ie && ie <= 9) {
                 defaultSetting.multipart_params.accept =
-                    "text/plain; charset=utf-8";
+                        "text/plain; charset=utf-8";
                 logger.debug("add accept text/plain in multipart params");
             }
 
@@ -917,14 +917,14 @@ function getCookieByString(cookieName) {
                 logger.debug("FilesAdded event activated");
                 var auto_start = up.getOption && up.getOption("auto_start");
                 auto_start =
-                    auto_start || (up.settings && up.settings.auto_start);
+                        auto_start || (up.settings && up.settings.auto_start);
                 logger.debug("auto_start: ", auto_start);
                 logger.debug("files: ", files);
 
                 for (var i = 0; i < files.length; i++) {
                     var file = files[i];
                     file.path = decodeURIComponent(
-                        getCookieByString("path_tmp")
+                            getCookieByString("path_tmp")
                     );
                 }
 
@@ -983,16 +983,16 @@ function getCookieByString(cookieName) {
                         };
                     } else {
 
-                            multipart_params_obj = {
-                                policy: that.policy,
-                                key:that.path,
-                                "x-cos-meta-callback": that.callback,
-                                "x-cos-meta-key": that.callback_key,
-                                "q-sign-algorithm": "sha1",
-                                "q-key-time": that.key_time,
-                                "q-ak": that.ak,
-                                "q-signature": that.token,
-                            };
+                        multipart_params_obj = {
+                            policy: that.policy,
+                            key:that.path,
+                            // "x-cos-meta-callback": that.callback,
+                            // "x-cos-meta-key": that.callback_key,
+                            //"q-sign-algorithm": "sha1",
+                            // "q-key-time": that.key_time,
+                            "AWSAccessKeyId": that.ak,
+                            "signature": that.token,
+                        };
 
                     }
                     var ie = that.detectIEVersion();
@@ -1000,15 +1000,15 @@ function getCookieByString(cookieName) {
                     // add accept in multipart params
                     if (ie && ie <= 9) {
                         multipart_params_obj.accept =
-                            "text/plain; charset=utf-8";
+                                "text/plain; charset=utf-8";
                         logger.debug(
-                            "add accept text/plain in multipart params"
+                                "add accept text/plain in multipart params"
                         );
                     }
 
                     logger.debug(
-                        "directUpload multipart_params_obj: ",
-                        multipart_params_obj
+                            "directUpload multipart_params_obj: ",
+                            multipart_params_obj
                     );
 
                     var x_vars = op.x_vars;
@@ -1017,25 +1017,25 @@ function getCookieByString(cookieName) {
                             if (x_vars.hasOwnProperty(x_key)) {
                                 if (typeof x_vars[x_key] === "function") {
                                     multipart_params_obj["x:" + x_key] = x_vars[
-                                        x_key
-                                    ](up, file);
+                                            x_key
+                                            ](up, file);
                                 } else if (typeof x_vars[x_key] !== "object") {
                                     multipart_params_obj["x:" + x_key] =
-                                        x_vars[x_key];
+                                            x_vars[x_key];
                                 }
                             }
                         }
                     }
 
 
-                        up.setOption({
-                            url: qiniuUploadUrl,
-                            multipart: true,
-                            chunk_size: is_android_weixin_or_qq()
+                    up.setOption({
+                        url: qiniuUploadUrl,
+                        multipart: true,
+                        chunk_size: is_android_weixin_or_qq()
                                 ? op.max_file_size
                                 : undefined,
-                            multipart_params: multipart_params_obj
-                        });
+                        multipart_params: multipart_params_obj
+                    });
 
                 };
 
@@ -1043,10 +1043,10 @@ function getCookieByString(cookieName) {
                 var is_android_weixin_or_qq = function() {
                     var ua = navigator.userAgent.toLowerCase();
                     if (
-                        (ua.match(/MicroMessenger/i) ||
-                            moxie.core.utils.Env.browser === "QQBrowser" ||
-                            ua.match(/V1_AND_SQ/i)) &&
-                        moxie.core.utils.Env.OS.toLowerCase() === "android"
+                            (ua.match(/MicroMessenger/i) ||
+                                    moxie.core.utils.Env.browser === "QQBrowser" ||
+                                    ua.match(/V1_AND_SQ/i)) &&
+                            moxie.core.utils.Env.OS.toLowerCase() === "android"
                     ) {
                         return true;
                     } else {
@@ -1056,7 +1056,7 @@ function getCookieByString(cookieName) {
 
                 var chunk_size = up.getOption && up.getOption("chunk_size");
                 chunk_size =
-                    chunk_size || (up.settings && up.settings.chunk_size);
+                        chunk_size || (up.settings && up.settings.chunk_size);
 
                 logger.debug("uploader.runtime: ", uploader.runtime);
                 logger.debug("chunk_size: ", chunk_size);
@@ -1066,16 +1066,16 @@ function getCookieByString(cookieName) {
                         getUpHosts(that.token);
                     }
                     if (
-                        (uploader.runtime === "html5" ||
-                            uploader.runtime === "flash") &&
-                        chunk_size
+                            (uploader.runtime === "html5" ||
+                                    uploader.runtime === "flash") &&
+                            chunk_size
                     ) {
                         if (
-                            file.size < chunk_size ||
-                            is_android_weixin_or_qq()
+                                file.size < chunk_size ||
+                                is_android_weixin_or_qq()
                         ) {
                             logger.debug(
-                                "directUpload because file.size < chunk_size || is_android_weixin_or_qq()"
+                                    "directUpload because file.size < chunk_size || is_android_weixin_or_qq()"
                             );
                             // direct upload if file size is less then the chunk size
                             directUpload(up, file, that.key_handler);
@@ -1102,24 +1102,24 @@ function getCookieByString(cookieName) {
                                             // TODO: if file.name and file.size is the same
                                             // but not the same file will cause error
                                             file.percent =
-                                                localFileInfo.percent;
+                                                    localFileInfo.percent;
                                             file.loaded = localFileInfo.offset;
                                             ctx = localFileInfo.ctx;
 
                                             // set speed info
                                             speedCalInfo.isResumeUpload = true;
                                             speedCalInfo.resumeFilesize =
-                                                localFileInfo.offset;
+                                                    localFileInfo.offset;
 
                                             // set block size
                                             if (
-                                                localFileInfo.offset +
+                                                    localFileInfo.offset +
                                                     blockSize >
-                                                file.size
+                                                    file.size
                                             ) {
                                                 blockSize =
-                                                    file.size -
-                                                    localFileInfo.offset;
+                                                        file.size -
+                                                        localFileInfo.offset;
                                             }
                                         } else {
                                             // remove file info when file.size is conflict with file info
@@ -1142,9 +1142,9 @@ function getCookieByString(cookieName) {
                             // add accept in multipart params
                             if (ie && ie <= 9) {
                                 multipart_params_obj.accept =
-                                    "text/plain; charset=utf-8";
+                                        "text/plain; charset=utf-8";
                                 logger.debug(
-                                    "add accept text/plain in multipart params"
+                                        "add accept text/plain in multipart params"
                                 );
                             }
                             // TODO: to support bput
@@ -1168,7 +1168,7 @@ function getCookieByString(cookieName) {
                                     required_features: "chunks",
                                     headers: {
                                         Authorization:
-                                            "UpToken " + getUptoken(file)
+                                                "UpToken " + getUptoken(file)
                                     },
                                     multipart_params: multipart_params_obj
                                 });
@@ -1176,7 +1176,7 @@ function getCookieByString(cookieName) {
                         }
                     } else {
                         logger.debug(
-                            "directUpload because uploader.runtime !== 'html5' || uploader.runtime !== 'flash' || !chunk_size"
+                                "directUpload because uploader.runtime !== 'html5' || uploader.runtime !== 'flash' || !chunk_size"
                         );
                         // direct upload if runtime is not html5
                         directUpload(up, file, that.key_handler);
@@ -1199,7 +1199,7 @@ function getCookieByString(cookieName) {
                 logger.trace("UploadProgress event activated");
                 speedCalInfo.currentTime = new Date().getTime();
                 var timeUsed =
-                    speedCalInfo.currentTime - speedCalInfo.startTime; // ms
+                        speedCalInfo.currentTime - speedCalInfo.startTime; // ms
                 var fileUploaded = file.loaded || 0;
                 if (speedCalInfo.isResumeUpload) {
                     fileUploaded = file.loaded - speedCalInfo.resumeFilesize;
@@ -1222,7 +1222,7 @@ function getCookieByString(cookieName) {
                 var leftSize = info.total - info.offset;
                 var chunk_size = up.getOption && up.getOption("chunk_size");
                 chunk_size =
-                    chunk_size || (up.settings && up.settings.chunk_size);
+                        chunk_size || (up.settings && up.settings.chunk_size);
                 if (leftSize < chunk_size) {
                     up.setOption({
                         url: qiniuUploadUrl + "/mkblk/" + leftSize
@@ -1233,8 +1233,8 @@ function getCookieByString(cookieName) {
                         });
                     }
                     logger.debug(
-                        "up.setOption url: ",
-                        qiniuUploadUrl + "/mkblk/" + leftSize
+                            "up.setOption url: ",
+                            qiniuUploadUrl + "/mkblk/" + leftSize
                     );
                 }
                 if (uploadConfig.saveType == "remote") {
@@ -1251,14 +1251,14 @@ function getCookieByString(cookieName) {
                     });
                 }
                 localStorage.setItem(
-                    file.name,
-                    that.stringifyJSON({
-                        ctx: ctx,
-                        percent: file.percent,
-                        total: info.total,
-                        offset: info.offset,
-                        time: new Date().getTime()
-                    })
+                        file.name,
+                        that.stringifyJSON({
+                            ctx: ctx,
+                            percent: file.percent,
+                            total: info.total,
+                            offset: info.offset,
+                            time: new Date().getTime()
+                        })
                 );
             });
 
@@ -1269,62 +1269,62 @@ function getCookieByString(cookieName) {
             // if error is unkown switch upload url and retry
             var unknow_error_retry = function(file) {
 
-                    return false;
+                return false;
 
             };
 
             // bind 'Error' event
             // check the err.code and return the errTip
             uploader.bind(
-                "Error",
-                (function(_Error_Handler) {
-                    return function(up, err) {
-                        logger.error("Error event activated");
-                        logger.error("err: ", err);
-                        var errTip = "";
-                        var file = err.file;
-                        if (file) {
-                            switch (err.code) {
-                                case plupload.FAILED:
-                                    errTip = "上传失败。请稍后再试。";
-                                    break;
-                                case plupload.FILE_SIZE_ERROR:
-                                    var max_file_size =
-                                        up.getOption &&
-                                        up.getOption("max_file_size");
-                                    max_file_size =
-                                        max_file_size ||
-                                        (up.settings &&
-                                            up.settings.max_file_size);
-                                    errTip =
-                                        "文件过大，您当前用户组最多可上传" +
-                                        max_file_size +
-                                        "的文件";
-                                    break;
-                                case plupload.FILE_EXTENSION_ERROR:
-                                    errTip = "您当前的用户组不可上传此文件";
-                                    break;
-                                case plupload.HTTP_ERROR:
-                                    if (err.response === "") {
-                                        // Fix parseJSON error ,when http error is like net::ERR_ADDRESS_UNREACHABLE
-                                        errTip =
-                                            err.message || "未知网络错误。";
-                                        if (!unknow_error_retry(file)) {
-                                            return;
-                                        }
+                    "Error",
+                    (function(_Error_Handler) {
+                        return function(up, err) {
+                            logger.error("Error event activated");
+                            logger.error("err: ", err);
+                            var errTip = "";
+                            var file = err.file;
+                            if (file) {
+                                switch (err.code) {
+                                    case plupload.FAILED:
+                                        errTip = "上传失败。请稍后再试。";
                                         break;
-                                    }
+                                    case plupload.FILE_SIZE_ERROR:
+                                        var max_file_size =
+                                                up.getOption &&
+                                                up.getOption("max_file_size");
+                                        max_file_size =
+                                                max_file_size ||
+                                                (up.settings &&
+                                                        up.settings.max_file_size);
+                                        errTip =
+                                                "文件过大，您当前用户组最多可上传" +
+                                                max_file_size +
+                                                "的文件";
+                                        break;
+                                    case plupload.FILE_EXTENSION_ERROR:
+                                        errTip = "您当前的用户组不可上传此文件";
+                                        break;
+                                    case plupload.HTTP_ERROR:
+                                        if (err.response === "") {
+                                            // Fix parseJSON error ,when http error is like net::ERR_ADDRESS_UNREACHABLE
+                                            errTip =
+                                                    err.message || "未知网络错误。";
+                                            if (!unknow_error_retry(file)) {
+                                                return;
+                                            }
+                                            break;
+                                        }
 
                                         var str = err.response;
                                         try {
                                             parser = new DOMParser();
                                             xmlDoc = parser.parseFromString(
-                                                str,
-                                                "text/xml"
+                                                    str,
+                                                    "text/xml"
                                             );
                                             errTip = "上传失败";
                                             var errorText = xmlDoc.getElementsByTagName(
-                                                "Message"
+                                                    "Message"
                                             )[0].innerHTML;
 
                                         } catch (e) {
@@ -1332,54 +1332,54 @@ function getCookieByString(cookieName) {
                                             var errorText = "Error";
                                         }
 
-                                    if (uploadConfig.saveType != "local") {
-                                        errTip =
-                                            errTip +
-                                            "(" +
-                                            err.status +
-                                            "：" +
-                                            errorText +
-                                            ")";
-                                    }
-                                    break;
-                                case plupload.SECURITY_ERROR:
-                                    errTip = "安全配置错误。请联系网站管理员。";
-                                    break;
-                                case plupload.GENERIC_ERROR:
-                                    errTip = "上传失败。请稍后再试。";
-                                    break;
-                                case plupload.IO_ERROR:
-                                    errTip = "上传失败。请稍后再试。";
-                                    break;
-                                case plupload.INIT_ERROR:
-                                    errTip = "网站配置错误。请联系网站管理员。";
-                                    uploader.destroy();
-                                    break;
-                                case 402:
-                                    errTip = "无法获取上传凭证";
-                                    if (err.message){
-                                        errTip = err.message;
-                                    }
-                                    break;
-                                case 403:
-                                    errTip = "无法完成文件上传";
-                                    break;
-                                case 404:
-                                    var errorObj = that.parseJSON(err.response);
-                                    var errorText = errorObj.msg;
-                                    errTip = errorText;
-                                    break;
-                                default:
-                                    errTip = err.message + err.details;
-                                    break;
+                                        if (uploadConfig.saveType != "local") {
+                                            errTip =
+                                                    errTip +
+                                                    "(" +
+                                                    err.status +
+                                                    "：" +
+                                                    errorText +
+                                                    ")";
+                                        }
+                                        break;
+                                    case plupload.SECURITY_ERROR:
+                                        errTip = "安全配置错误。请联系网站管理员。";
+                                        break;
+                                    case plupload.GENERIC_ERROR:
+                                        errTip = "上传失败。请稍后再试。";
+                                        break;
+                                    case plupload.IO_ERROR:
+                                        errTip = "上传失败。请稍后再试。";
+                                        break;
+                                    case plupload.INIT_ERROR:
+                                        errTip = "网站配置错误。请联系网站管理员。";
+                                        uploader.destroy();
+                                        break;
+                                    case 402:
+                                        errTip = "无法获取上传凭证";
+                                        if (err.message){
+                                            errTip = err.message;
+                                        }
+                                        break;
+                                    case 403:
+                                        errTip = "无法完成文件上传";
+                                        break;
+                                    case 404:
+                                        var errorObj = that.parseJSON(err.response);
+                                        var errorText = errorObj.msg;
+                                        errTip = errorText;
+                                        break;
+                                    default:
+                                        errTip = err.message + err.details;
+                                        break;
+                                }
+                                if (_Error_Handler) {
+                                    _Error_Handler(up, err, errTip);
+                                }
                             }
-                            if (_Error_Handler) {
-                                _Error_Handler(up, err, errTip);
-                            }
-                        }
-                        up.refresh(); // Reposition Flash/Silverlight
-                    };
-                })(_Error_Handler)
+                            up.refresh(); // Reposition Flash/Silverlight
+                        };
+                    })(_Error_Handler)
             );
 
             logger.debug("bind Error event");
@@ -1389,61 +1389,61 @@ function getCookieByString(cookieName) {
             // - get downtoken from downtoken_url if bucket is private
             // - invoke mkfile api to compose chunks if upload strategy is chunk upload
             uploader.bind(
-                "FileUploaded",
-                (function(_FileUploaded_Handler) {
-                    return function(up, file, info) {
-                        logger.debug("FileUploaded event activated");
-                        logger.debug("file: ", file);
-                        logger.debug("info: ", info);
-                        if (uploadConfig.saveType == "s3") {
-                        }
-                        var last_step = function(up, file, info) {
-                            if (_FileUploaded_Handler) {
-                                _FileUploaded_Handler(up, file, info);
+                    "FileUploaded",
+                    (function(_FileUploaded_Handler) {
+                        return function(up, file, info) {
+                            logger.debug("FileUploaded event activated");
+                            logger.debug("file: ", file);
+                            logger.debug("info: ", info);
+                            if (uploadConfig.saveType == "s3") {
                             }
-                        };
-                        ajax = that.createAjax();
-                        ajax.open("GET", file.callbackURL, true);
-                        var onreadystatechange = function() {
-                            logger.debug("ajax.readyState: ", ajax.readyState);
-                            if (ajax.readyState === 4) {
-                                var info;
-                                if (ajax.status === 200) {
-                                    info = ajax.responseText;
-                                    var res = that.parseJSON(info);
-                                    if (res.code == 0){
-                                        localStorage.removeItem(file.name);
-                                        up.trigger("Fresh");
-                                        last_step(up, file, info);
-                                    }else{
+                            var last_step = function(up, file, info) {
+                                if (_FileUploaded_Handler) {
+                                    _FileUploaded_Handler(up, file, info);
+                                }
+                            };
+                            ajax = that.createAjax();
+                            ajax.open("GET", file.callbackURL, true);
+                            var onreadystatechange = function() {
+                                logger.debug("ajax.readyState: ", ajax.readyState);
+                                if (ajax.readyState === 4) {
+                                    var info;
+                                    if (ajax.status === 200) {
+                                        info = ajax.responseText;
+                                        var res = that.parseJSON(info);
+                                        if (res.code == 0){
+                                            localStorage.removeItem(file.name);
+                                            up.trigger("Fresh");
+                                            last_step(up, file, info);
+                                        }else{
+                                            info = {
+                                                status: ajax.status,
+                                                response: ajax.responseText,
+                                                file: file,
+                                                code: 404,
+                                                responseHeaders: ajax.getAllResponseHeaders()
+                                            };
+                                            logger.debug("mkfile is error: ", info);
+                                            uploader.trigger("Error", info);
+                                        }
+
+                                    } else {
                                         info = {
                                             status: ajax.status,
                                             response: ajax.responseText,
                                             file: file,
-                                            code: 404,
+                                            code: 403,
                                             responseHeaders: ajax.getAllResponseHeaders()
                                         };
                                         logger.debug("mkfile is error: ", info);
                                         uploader.trigger("Error", info);
                                     }
-
-                                } else {
-                                    info = {
-                                        status: ajax.status,
-                                        response: ajax.responseText,
-                                        file: file,
-                                        code: 403,
-                                        responseHeaders: ajax.getAllResponseHeaders()
-                                    };
-                                    logger.debug("mkfile is error: ", info);
-                                    uploader.trigger("Error", info);
                                 }
-                            }
+                            };
+                            ajax.onreadystatechange = onreadystatechange;
+                            ajax.send(info.response);
                         };
-                        ajax.onreadystatechange = onreadystatechange;
-                        ajax.send(info.response);
-                    };
-                })(_FileUploaded_Handler)
+                    })(_FileUploaded_Handler)
             );
 
             logger.debug("bind FileUploaded event");
@@ -1487,10 +1487,10 @@ function getCookieByString(cookieName) {
             }
 
             var mode = op.mode,
-                w = op.w || "",
-                h = op.h || "",
-                q = op.q || "",
-                format = op.format || "";
+                    w = op.w || "",
+                    h = op.h || "",
+                    q = op.q || "",
+                    format = op.format || "";
 
             if (!w && !h) {
                 return false;
@@ -1515,14 +1515,14 @@ function getCookieByString(cookieName) {
          */
         this.imageMogr2 = function(op, key) {
             var auto_orient = op["auto-orient"] || "",
-                thumbnail = op.thumbnail || "",
-                strip = op.strip || "",
-                gravity = op.gravity || "",
-                crop = op.crop || "",
-                quality = op.quality || "",
-                rotate = op.rotate || "",
-                format = op.format || "",
-                blur = op.blur || "";
+                    thumbnail = op.thumbnail || "",
+                    strip = op.strip || "",
+                    gravity = op.gravity || "",
+                    crop = op.crop || "",
+                    quality = op.quality || "",
+                    rotate = op.rotate || "",
+                    format = op.format || "",
+                    blur = op.blur || "";
             //Todo check option
 
             var imageUrl = "imageMogr2";
@@ -1563,35 +1563,35 @@ function getCookieByString(cookieName) {
                     return false;
                 }
                 imageUrl += image
-                    ? "/image/" + this.URLSafeBase64Encode(image)
-                    : "";
+                        ? "/image/" + this.URLSafeBase64Encode(image)
+                        : "";
             } else if (mode === 2) {
                 var text = op.text ? op.text : "",
-                    font = op.font ? op.font : "",
-                    fontsize = op.fontsize ? op.fontsize : "",
-                    fill = op.fill ? op.fill : "";
+                        font = op.font ? op.font : "",
+                        fontsize = op.fontsize ? op.fontsize : "",
+                        fill = op.fill ? op.fill : "";
                 if (!text) {
                     return false;
                 }
                 imageUrl += text
-                    ? "/text/" + this.URLSafeBase64Encode(text)
-                    : "";
+                        ? "/text/" + this.URLSafeBase64Encode(text)
+                        : "";
                 imageUrl += font
-                    ? "/font/" + this.URLSafeBase64Encode(font)
-                    : "";
+                        ? "/font/" + this.URLSafeBase64Encode(font)
+                        : "";
                 imageUrl += fontsize ? "/fontsize/" + fontsize : "";
                 imageUrl += fill
-                    ? "/fill/" + this.URLSafeBase64Encode(fill)
-                    : "";
+                        ? "/fill/" + this.URLSafeBase64Encode(fill)
+                        : "";
             } else {
                 // Todo mode3
                 return false;
             }
 
             var dissolve = op.dissolve || "",
-                gravity = op.gravity || "",
-                dx = op.dx || "",
-                dy = op.dy || "";
+                    gravity = op.gravity || "",
+                    dx = op.dx || "",
+                    dy = op.dy || "";
 
             imageUrl += dissolve ? "/dissolve/" + dissolve : "";
             imageUrl += gravity ? "/gravity/" + gravity : "";
@@ -1679,10 +1679,10 @@ function getCookieByString(cookieName) {
          */
         this.pipeline = function(arr, key) {
             var isArray =
-                Object.prototype.toString.call(arr) === "[object Array]";
+                    Object.prototype.toString.call(arr) === "[object Array]";
             var option,
-                errOp,
-                imageUrl = "";
+                    errOp,
+                    imageUrl = "";
             if (isArray) {
                 for (var i = 0, len = arr.length; i < len; i++) {
                     option = arr[i];

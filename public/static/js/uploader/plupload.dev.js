@@ -1668,7 +1668,7 @@
                     var formData;
 
                     xhr = new o.xhr.XMLHttpRequest();
-
+                    delete args.name
                     // todo 自动变换此项设置
                     //xhr.withCredentials = true;
 
@@ -1698,7 +1698,7 @@
                         if (
                             uploadConfig.saveType === "local" ||
                             uploadConfig.saveType === "remote" ||
-                            uploadConfig.saveType === "oss" ||
+                         // /*   uploadConfig.saveType === "oss" ||*/
 							(uploadConfig.saveType === "onedrive" && file.size <= 4*1024*1024)
                         ) {
                             var res = JSON.parse(xhr.responseText);
