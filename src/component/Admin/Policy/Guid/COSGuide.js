@@ -325,11 +325,11 @@ export default function COSGuide(props) {
                                         空间名称
                                     </InputLabel>
                                     <Input
-                                        inputProps={{
-                                            pattern:"[a-z0-9-]+-[0-9]+",
-                                            title:"空间名格式不正确, 举例：ccc-1252109809"
-                                        }}
-                                        required
+                                        // inputProps={{
+                                        //     pattern:"[a-z0-9-]+-[0-9]+",
+                                        //     title:"空间名格式不正确, 举例：ccc-1252109809"
+                                        // }}
+                                        // required
                                         value={policy.BucketName}
                                         onChange={handleChange("BucketName")}
                                     />
