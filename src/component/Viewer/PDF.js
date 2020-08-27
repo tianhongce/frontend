@@ -9,7 +9,7 @@ import { toggleSnackbar } from "../../actions";
 import { changeSubTitle } from "../../redux/viewUpdate/action";
 import pathHelper from "../../utils/page";
 import TextLoading from "../Placeholder/TextLoading";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = './static/js/pdf/pdf.worker.js';
 
 const useStyles = makeStyles(theme => ({
     layout: {
