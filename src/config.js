@@ -1,5 +1,5 @@
 export const imgPreviewSuffix = ["bmp","png","gif","jpg","jpeg","svg","webp"];
-export const msDocPreviewSuffix = ["ppt","pptx","pps","doc","docx","xlsx","xls"];
+export const msDocPreviewSuffix = ["ppt","pptx","pps","doc","docx","xlsx","xls","et","wps","dps"];
 export const audioPreviewSuffix = ["mp3","ogg"];
 export const videoPreviewSuffix = ["mp4","mkv","webm"];
 export const pdfPreviewSuffix = ["pdf"];
@@ -32,9 +32,9 @@ export const mediaType = {
     video:["mp4","flv","avi","wmv","mkv","rm","rmvb","mov","ogv"],
     image:["bmp","iff","png","gif","jpg","jpeg","psd","svg","webp"],
     pdf:["pdf"],
-    word:["doc","docx"],
-    ppt:["ppt","pptx"],
-    excel:["xls","xlsx","csv"],
+    word:["doc","docx","wps"],
+    ppt:["ppt","pptx","dps"],
+    excel:["xls","xlsx","csv","et"],
     text:["txt","md","html"],
     torrent:["torrent"],
     zip:["zip","gz","tar","rar","7z"],
